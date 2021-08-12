@@ -10,4 +10,8 @@
     <string name="Vespertino">Vespertino</string>
     <string name="Modalidad">Modalidad</string>
     <string name="Save">Guardar</string>
+    <string name="title_activity_button2">ButtonActivity2</string>
+    <string name="title_home">Estudiantes</string>
+    <string name="title_dashboard">Maestros</string>
+    <string name="title_notifications">Misselanea</string>
 </resources>

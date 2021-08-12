@@ -1,41 +1,69 @@
-package com.jbgYimtr.asistencia
+package com.jbgYimtr.asistencia.ui.home
 
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.firestore.DocumentReference
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import com.jbgYimtr.asistencia.CentroAsistencia
+import com.jbgYimtr.asistencia.R
 import com.jbgYimtr.asistencia.databinding.ActivityMainBinding
+import com.jbgYimtr.asistencia.databinding.FragmentHomeBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
+class HomeFragment : Fragment() {
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var homeViewModel: HomeViewModel
+    private var _binding: ActivityMainBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.Btbuscar.setOnClickListener {
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        _binding = ActivityMainBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        val buscar: View =binding.Btbuscar
+        buscar.setOnClickListener {
             buscar()
         }
-        binding.NameCenter.setOnClickListener {
+        val NameCenterAtras: View =binding.NameCenter
+        NameCenterAtras.setOnClickListener {
             atras()
         }
-        binding.btSave.setOnClickListener {
+        val SaveBt: View =binding.btSave
+        SaveBt.setOnClickListener {
             saveprueba()
         }
-        binding.button.setOnClickListener {
-            test()
-        }
+
+        val textView: TextView = binding.textView
+        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+            textView.text = it
+        })
+
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun atras(){
@@ -165,12 +193,14 @@ class MainActivity : AppCompatActivity() {
                 }else{
                     val text = "Codigo no Encontrado"
                     val duration = Toast.LENGTH_SHORT
-                    val toast = Toast.makeText(applicationContext, text, duration)
+
+                    val toast = Toast.makeText(context, "cogo no Encontrado", Toast.LENGTH_SHORT)
                     toast.show()
                 }
+
             }
-        val imm= getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.CodEst.windowToken,0)
+        //val imm= getSystemService(this.INPUT_METHOD_SERVICE) as InputMethodManager
+        //imm.hideSoftInputFromWindow(binding.CodEst.windowToken,0)
     }
     private fun Save(){
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -203,14 +233,14 @@ class MainActivity : AppCompatActivity() {
             .document(codigo).set(datos).addOnCompleteListener {
                 val text = "Datos Guardados"
                 val duration = Toast.LENGTH_LONG
-                val toast = Toast.makeText(applicationContext, text, duration)
+                val toast = Toast.makeText(context, text, duration)
                 toast.show()
                 atras()
             }
 
     }
     private fun hora(){
-         val c= Calendar.getInstance()
+        val c= Calendar.getInstance()
         val hora = c.get(Calendar.HOUR_OF_DAY)
         //val minuto = c.get(Calendar.MINUTE)
         if (hora>=12){
@@ -245,7 +275,7 @@ class MainActivity : AppCompatActivity() {
             .document(codigo)
             .get()
             .addOnSuccessListener {documentSnapsot->
-            //binding.textView.setText(datos.getString("Modalidad1"))
+                //binding.textView.setText(datos.getString("Modalidad1"))
                 val data= documentSnapsot.toObject(CentroAsistencia::class.java)
 
                 if (data != null) {
@@ -275,13 +305,13 @@ class MainActivity : AppCompatActivity() {
                                         val text = "Asistencia invalida,"+data.Modalidad1 +" no puede ser mayor a su MA"
                                         val duration = Toast.LENGTH_LONG
                                         val toast =
-                                            Toast.makeText(applicationContext, text, duration)
+                                            Toast.makeText(context, text, duration)
                                         toast.show()
                                     }
                                 }else{
                                     val text = "Debe Rellenar Todos Los Campos"
                                     val duration = Toast.LENGTH_SHORT
-                                    val toast = Toast.makeText(applicationContext, text, duration)
+                                    val toast = Toast.makeText(context, text, duration)
                                     toast.show()
                                 }
                             }
@@ -290,19 +320,19 @@ class MainActivity : AppCompatActivity() {
                             if (data.MA_F_2 != null){
                                 if(binding.AsisF1.text.isNotEmpty() && binding.AsisM1.text.isNotEmpty()
                                     && binding.AsisF2.text.isNotEmpty() && binding.AsisM2.text.isNotEmpty()){
-                                if (data.MA_F_1!! >= binding.AsisF1.text.toString().toLong() && data.MA_M_1!! >= binding.AsisM1.text.toString().toLong()
-                                    && data.MA_F_2!! >= binding.AsisF2.text.toString().toLong() && data.MA_M_2!! >= binding.AsisM2.text.toString().toLong()) {
-                                    Save2()
-                                } else {
-                                    val text = "Asistencia invalida,"+data.Modalidad1+ " ó "+data.Modalidad2+" no puede ser mayor a su MA"
-                                    val duration = Toast.LENGTH_LONG
-                                    val toast = Toast.makeText(applicationContext, text, duration)
-                                    toast.show()
-                                }
+                                    if (data.MA_F_1!! >= binding.AsisF1.text.toString().toLong() && data.MA_M_1!! >= binding.AsisM1.text.toString().toLong()
+                                        && data.MA_F_2!! >= binding.AsisF2.text.toString().toLong() && data.MA_M_2!! >= binding.AsisM2.text.toString().toLong()) {
+                                        Save2()
+                                    } else {
+                                        val text = "Asistencia invalida,"+data.Modalidad1+ " ó "+data.Modalidad2+" no puede ser mayor a su MA"
+                                        val duration = Toast.LENGTH_LONG
+                                        val toast = Toast.makeText(context, text, duration)
+                                        toast.show()
+                                    }
                                 }else{
                                     val text = "Debe Rellenar Todos Los Campos"
                                     val duration = Toast.LENGTH_SHORT
-                                    val toast = Toast.makeText(applicationContext, text, duration)
+                                    val toast = Toast.makeText(context, text, duration)
                                     toast.show()
                                 }
                             }
@@ -325,13 +355,13 @@ class MainActivity : AppCompatActivity() {
                                         val duration = Toast.LENGTH_SHORT
 
                                         val toast =
-                                            Toast.makeText(applicationContext, text, duration)
+                                            Toast.makeText(context, text, duration)
                                         toast.show()
                                     }
                                 }else{
                                     val text = "Debe Rellenar Todos Los Campos"
                                     val duration = Toast.LENGTH_SHORT
-                                    val toast = Toast.makeText(applicationContext, text, duration)
+                                    val toast = Toast.makeText(context, text, duration)
                                     toast.show()
                                 }
                             }
@@ -357,7 +387,7 @@ class MainActivity : AppCompatActivity() {
                                         val duration = Toast.LENGTH_LONG
 
                                         val toast =
-                                            Toast.makeText(applicationContext, text, duration)
+                                            Toast.makeText(context, text, duration)
                                         toast.show()
                                     }
                                 }else{
@@ -368,14 +398,14 @@ class MainActivity : AppCompatActivity() {
                         else ->{
                             val text = "Ha ocurrido un error"
                             val duration = Toast.LENGTH_SHORT
-                            val toast = Toast.makeText(applicationContext, text, duration)
+                            val toast = Toast.makeText(context, text, duration)
                             toast.show()
                         }
 
                     }
                 }
 
-        }
+            }
 
     }
     private fun Save2(){
@@ -413,7 +443,7 @@ class MainActivity : AppCompatActivity() {
             .document(codigo).set(datos).addOnCompleteListener {
                 val text = "Datos Guardados"
                 val duration = Toast.LENGTH_LONG
-                val toast = Toast.makeText(applicationContext, text, duration)
+                val toast = Toast.makeText(context, text, duration)
                 toast.show()
                 atras()
             }
@@ -457,7 +487,7 @@ class MainActivity : AppCompatActivity() {
             .document(codigo).set(datos).addOnCompleteListener {
                 val text = "Datos Guardados"
                 val duration = Toast.LENGTH_LONG
-                val toast = Toast.makeText(applicationContext, text, duration)
+                val toast = Toast.makeText(context, text, duration)
                 toast.show()
                 atras()
             }
@@ -505,7 +535,7 @@ class MainActivity : AppCompatActivity() {
             .document(codigo).set(datos).addOnCompleteListener {
                 val text = "Datos Guardados"
                 val duration = Toast.LENGTH_LONG
-                val toast = Toast.makeText(applicationContext, text, duration)
+                val toast = Toast.makeText(context, text, duration)
                 toast.show()
                 atras()
             }
@@ -516,5 +546,6 @@ class MainActivity : AppCompatActivity() {
         val currenDate=sdf.format(Date())
         binding.textView.text=currenDate.toString()
     }
+
 
 }
