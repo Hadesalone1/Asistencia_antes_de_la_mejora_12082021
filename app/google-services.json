@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "762968069018",
+    "project_id": "asistencia-mined-1a19d",
+    "storage_bucket": "asistencia-mined-1a19d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762968069018:android:c2866b5cab24d1e9eb2023",
+        "android_client_info": {
+          "package_name": "com.jbgYimtr.asistencia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "762968069018-hbuhvtephkf4rqo5ke0hnqgs9qvai5lp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqpUWsjpKNQ7Fmd4gNcDjwXHzXCpJjZJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "762968069018-hbuhvtephkf4rqo5ke0hnqgs9qvai5lp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

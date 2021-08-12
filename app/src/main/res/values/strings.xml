@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Asistencia</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="Cod_Est">Codigo de establecimiento</string>
+    <string name="Search">Buscar</string>
+    <string name="Asistencia">Asistencia</string>
+    <string name="F">F</string>
+    <string name="M">M</string>
+    <string name="Matutino">Matutino</string>
+    <string name="Vespertino">Vespertino</string>
+    <string name="Modalidad">Modalidad</string>
+    <string name="Save">Guardar</string>
+</resources>

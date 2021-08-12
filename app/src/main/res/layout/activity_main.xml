@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textAlignment="center"
+        tools:context=".MainActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/Name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome" />
+
+                <EditText
+                    android:id="@+id/Cod_Est"
+                    style="@style/Name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/Cod_Est"
+                    android:inputType="phone" />
+
+                <Button
+                    android:id="@+id/Btbuscar"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:text="@string/Search" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Button"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/Name_center"
+                    style="@style/Name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/Dependencia"
+                    style="@style/Name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/Dependencia3"
+                    style="@style/Name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/Dependencia2"
+                    style="@style/Name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <RadioGroup
+                    android:id="@+id/Turno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <RadioButton
+                        android:id="@+id/Mat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/Matutino" />
+
+                    <RadioButton
+                        android:id="@+id/Vesp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="@string/Vespertino" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/LLetiquetas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/modalidad"
+                        style="@style/Name_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/Modalidad" />
+
+                    <TextView
+                        android:id="@+id/Asistencia"
+                        style="@style/Name_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/Asistencia" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/Dependencia4"
+                    style="@style/Name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <ScrollView
+                    android:id="@+id/Scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TableLayout
+                            android:id="@+id/Tabla"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginEnd="1dp"
+                            android:visibility="visible">
+
+                            <TableRow
+                                android:id="@+id/md1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="1dp"
+                                android:paddingEnd="1dp">
+
+                                <TextView
+                                    android:id="@+id/Modalidad1"
+                                    style="@style/Etiquetas_tabla"
+
+                                    />
+
+                                <EditText
+                                    android:id="@+id/AsisF1"
+                                    style="@style/tabla"
+                                    android:layout_width="63dp"
+                                    android:hint="@string/F" />
+
+                                <EditText
+                                    android:id="@+id/AsisM1"
+                                    style="@style/tabla"
+                                    android:layout_width="63dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="16dp"
+                                    android:ems="10"
+                                    android:hint="@string/M"
+                                    android:inputType="phone" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/md2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/Modalidad2"
+                                    style="@style/Etiquetas_tabla"
+
+                                    android:layout_height="wrap_content" />
+
+                                <EditText
+                                    android:id="@+id/AsisF2"
+                                    style="@style/tabla"
+                                    android:layout_width="63dp"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="@string/F"
+                                    android:inputType="phone" />
+
+                                <EditText
+                                    android:id="@+id/AsisM2"
+                                    style="@style/tabla"
+                                    android:layout_width="63dp"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="@string/M"
+                                    android:inputType="phone" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/md3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/Modalidad3"
+                                    style="@style/Etiquetas_tabla"
+
+                                    android:layout_height="wrap_content" />
+
+                                <EditText
+                                    android:id="@+id/AsisF3"
+                                    style="@style/tabla"
+                                    android:layout_width="63dp"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="@string/F"
+                                    android:inputType="phone" />
+
+                                <EditText
+                                    android:id="@+id/AsisM3"
+                                    style="@style/tabla"
+                                    android:layout_width="63dp"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="@string/M"
+                                    android:inputType="phone" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/md4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="visible">
+
+                                <TextView
+                                    android:id="@+id/Modalidad4"
+                                    style="@style/Etiquetas_tabla"
+
+                                    />
+
+                                <EditText
+                                    android:id="@+id/AsisF4"
+                                    style="@style/tabla"
+                                    android:layout_width="63dp"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="@string/F"
+                                    android:inputType="phone" />
+
+                                <EditText
+                                    android:id="@+id/AsisM4"
+                                    style="@style/tabla"
+                                    android:layout_width="63dp"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="@string/M"
+                                    android:inputType="phone" />
+                            </TableRow>
+                        </TableLayout>
+
+                        <Button
+                            android:id="@+id/btSave"
+                            style="@style/Widget.AppCompat.Button.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/layout_margin"
+                            android:text="@string/Save"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>
