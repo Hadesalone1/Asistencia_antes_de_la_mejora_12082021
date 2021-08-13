@@ -14,18 +14,19 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView"
                     style="@style/Name_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="@string/welcome" />
 
                 <EditText
@@ -35,7 +36,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/Cod_Est"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:minHeight="48dp" />
 
                 <Button
                     android:id="@+id/Btbuscar"
@@ -287,10 +289,15 @@
                             android:layout_marginTop="@dimen/layout_margin"
                             android:text="@string/Save"
                             android:visibility="gone" />
+
                     </LinearLayout>
                 </ScrollView>
             </LinearLayout>
         </ScrollView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
 
     </LinearLayout>
 </layout>

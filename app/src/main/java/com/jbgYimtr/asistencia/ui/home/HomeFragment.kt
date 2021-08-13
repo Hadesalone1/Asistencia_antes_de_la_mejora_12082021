@@ -269,7 +269,7 @@ class HomeFragment : Fragment() {
         else{
             turno="matutino"
         }
-        db.collection("centro")
+        db.collection("centromaestros")
             .document(turno)
             .collection("nombrecentros")
             .document(codigo)

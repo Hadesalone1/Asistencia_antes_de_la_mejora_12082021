@@ -1,22 +1,318 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
-
-    <TextView
-        android:id="@+id/text_dashboard"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        tools:context=".ui.dashboard.DashboardFragment">
+
+        <TextView
+            android:id="@+id/text_dashboard"
+            style="@style/Name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.06" />
+
+        <EditText
+            android:id="@+id/txtCodEst"
+            style="@style/Name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/Cod_Est"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_dashboard" />
+
+        <Button
+            android:id="@+id/btBuscar"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/Search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCodEst" />
+
+        <TextView
+            android:id="@+id/name_center"
+            style="@style/Name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/btBuscar"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/dependencia"
+            style="@style/Name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/name_center"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/dependencia2"
+            style="@style/Name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/dependencia"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/dependencia3"
+            style="@style/Name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/dependencia2"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/dependencia4"
+            style="@style/Name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/dependencia3"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <RadioGroup
+            android:id="@+id/Turno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/name_center">
+
+            <RadioButton
+                android:id="@+id/Mat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/Matutino" />
+
+            <RadioButton
+                android:id="@+id/Vesp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/Vespertino" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/LLetiquetas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/Turno">
+
+            <TextView
+                android:id="@+id/modalidad"
+                style="@style/Name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Modalidad" />
+
+            <TextView
+                android:id="@+id/Asistencia"
+                style="@style/Name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Asistencia" />
+
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/Tabla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LLetiquetas">
+
+            <TableRow
+                android:id="@+id/md1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="1dp"
+                android:paddingEnd="1dp">
+
+                <TextView
+                    android:id="@+id/Modalidad1"
+                    style="@style/Etiquetas_tabla"
+
+                    />
+
+                <EditText
+                    android:id="@+id/AsisF1"
+                    style="@style/tabla"
+                    android:layout_width="63dp"
+                    android:hint="@string/F"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/AsisM1"
+                    style="@style/tabla"
+                    android:layout_width="63dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:ems="10"
+                    android:hint="@string/M"
+                    android:inputType="phone"
+                    android:minHeight="48dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/md2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/Modalidad2"
+                    style="@style/Etiquetas_tabla"
+
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/AsisF2"
+                    style="@style/tabla"
+                    android:layout_width="63dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/F"
+                    android:inputType="phone"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/AsisM2"
+                    style="@style/tabla"
+                    android:layout_width="63dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/M"
+                    android:inputType="phone"
+                    android:minHeight="48dp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/md3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/Modalidad3"
+                    style="@style/Etiquetas_tabla"
+
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/AsisF3"
+                    style="@style/tabla"
+                    android:layout_width="63dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/F"
+                    android:inputType="phone"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/AsisM3"
+                    style="@style/tabla"
+                    android:layout_width="63dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/M"
+                    android:inputType="phone"
+                    android:minHeight="48dp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/md4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/Modalidad4"
+                    style="@style/Etiquetas_tabla"
+
+                    />
+
+                <EditText
+                    android:id="@+id/AsisF4"
+                    style="@style/tabla"
+                    android:layout_width="63dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/F"
+                    android:inputType="phone"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/AsisM4"
+                    style="@style/tabla"
+                    android:layout_width="63dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/M"
+                    android:inputType="phone"
+                    android:minHeight="48dp" />
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btSave2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="16dp"
+            android:text="@string/Save"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Tabla"
+            app:layout_constraintVertical_bias="0.188" />
+
+        <Space
+            android:layout_width="411dp"
+            android:layout_height="90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btSave2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
